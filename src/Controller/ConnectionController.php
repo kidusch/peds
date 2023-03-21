@@ -14,6 +14,7 @@ class ConnectionController extends AbstractController
     {
         $this->boeyRepository = $boeyRepository;
     }
+  
     /**
      * @Route("/test", name="app_test", methods={"POST"})
      */
