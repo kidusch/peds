@@ -39,9 +39,10 @@ class BoeyRepository extends ServiceEntityRepository
         }
     }
 
-    public function add($id){
+    public function add($id, $transaction_type, $invoice_no, $payment_type, $table_number, $sales_person, $hold_memo, $date, $customer_name, $customer_tin, $customer_vat, $cashier_updated, $posid){
         $conn = $this->getEntityManager()->getConnection();
-        $sql = "INSERT INTO boey(hold_sales_identifier_id) VALUES ('$id')";
+        $sql = "INSERT INTO boey(hold_sales_identifier_id, transaction_type, invoice_no, payment_type, table_number, sales_person, hold_memo, date,  customer_name, customer_tin, customer_vat, cashier_updated, posid ) 
+        VALUES ('$id', '$transaction_type', '$invoice_no', '$payment_type', '$table_number', '$sales_person', '$hold_memo', '$date', '$customer_name', '$customer_tin', '$customer_vat', '$cashier_updated', '$posid')";
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
         $conn->close();
